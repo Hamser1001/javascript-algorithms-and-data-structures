@@ -5,16 +5,36 @@ function getRandomComputerResult() {
 }
 
 function hasPlayerWonTheRound(player, computer) {
-  if(player === "Rock" && computer === "Scissors"){
-    return true;
-  } else if(player === "Scissors" && computer === "Paper"){
-    return true;
-  }else if(player === "Paper" && computer === "Rock"){
-    return true;
+  return (
+    (player === "Rock" && computer === "Scissors") ||
+    (player === "Scissors" && computer === "Paper") ||
+    (player === "Paper" && computer === "Rock")
+  );
+}
+
+let playerScore = 0;
+let computerScore = 0;
+
+function getRoundResults(userOption) {
+  const computerResult = getRandomComputerResult();
+
+  if (hasPlayerWonTheRound(userOption, computerResult)) {
+    playerScore++;
+    return `Player wins! ${userOption} beats ${computerResult}`;
+  } else if (computerResult === userOption) {
+    return `It's a tie! Both chose ${userOption}`;
   } else {
-    return false;
+    computerScore++;
+    return `Computer wins! ${computerResult} beats ${userOption}`;
   }
 }
 
-console.log(hasPlayerWonTheRound("Rock", "Scissors")); 
-console.log(hasPlayerWonTheRound("Scissors", "Rock")); 
+const playerScoreSpanElement = document.getElementById("player-score");
+const computerScoreSpanElement = document.getElementById("computer-score");
+const roundResultsMsg = document.getElementById("results-msg");
+
+function showResults(userOption) {
+
+};
+
+showResults("Rock");
