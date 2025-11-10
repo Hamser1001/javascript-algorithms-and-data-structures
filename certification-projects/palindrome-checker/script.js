@@ -26,4 +26,9 @@ checkBtn.addEventListener("click", () => {
     } else {
         result.innerText = `${textInput.value} is not a Palindrome`;
     }
+    // clear the text input after one minute
+    setTimeout(() => {
+        textInput.value = "";  // clears the input
+        result.innerText = "";  // clears the result
+    }, 60000);
 });
