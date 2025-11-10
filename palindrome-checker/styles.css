@@ -12,6 +12,7 @@ body {
     background: linear-gradient(to bottom,
             rgba(20, 70, 199, 1),
             rgba(97, 135, 233, 1));
+    box-sizing: border-box;
 }
 
 /* main is the wrapper of the content in the web page  */
@@ -49,4 +50,41 @@ main h1 {
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
+}
+
+
+/* the paragraph that show the result */
+#result {}
+
+
+#check-btn {
+    height: 31px;
+    width: 80px;
+    border-radius: 4px;
+    background: rgba(0, 119, 238, 1);
+    border: 0;
+    color: rgba(255, 255, 255, 1);
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#text-input {
+    height: 30px;
+    width: 250px;
+    padding: 0 5px;
+    border-radius: 4px;
+    border: 1px solid rgba(166, 188, 218, 1);
+
+}
+
+#card p {
+    font-family: "Inter", sans-serif;
+    text-align: center;
+    color: rgba(53, 70, 101, 1);
+}
+
+
+#check-btn:hover {
+    background-color: black;
 }
