@@ -1,0 +1,52 @@
+body {
+    overflow: hidden;
+    margin: auto;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid blue;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: linear-gradient(to bottom,
+            rgba(20, 70, 199, 1),
+            rgba(97, 135, 233, 1));
+}
+
+/* main is the wrapper of the content in the web page  */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    height: 100%;
+}
+
+
+/* I used this card for both card in the screen */
+#card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 1);
+}
+
+
+/* This is the title of the website h1 */
+main h1 {
+    text-align: center;
+    color: aliceblue;
+    font-family: Inter;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
