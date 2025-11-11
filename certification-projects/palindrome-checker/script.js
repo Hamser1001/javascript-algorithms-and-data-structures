@@ -16,7 +16,7 @@ const reverseFunction = (text) => {
 }
 
 
-checkBtn.addEventListener("click", () => {
+function operation() {
     const cleanedtext = cleanText(textInput.value).toLowerCase().split("").join("")
     const text = reverseFunction(cleanedtext);
     if (cleanedtext == "") {
@@ -31,4 +31,18 @@ checkBtn.addEventListener("click", () => {
         textInput.value = "";  // clears the input
         result.innerText = "";  // clears the result
     }, 60000);
+}
+
+
+checkBtn.addEventListener("click", () => {
+    operation();
 });
+
+
+textInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        operation();
+    }
+});
+
+
