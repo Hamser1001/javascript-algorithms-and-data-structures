@@ -90,12 +90,9 @@ main h1 {
     background-color: black;
 }
 
-
 #text-input:focus {
     border: 1.5px solid rgba(0, 119, 238, 1);
 }
-
-
 
 @media (min-width: 576px) and (max-width: 767.98px) {
     main {
