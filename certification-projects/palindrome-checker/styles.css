@@ -58,7 +58,6 @@ main h1 {
 /* the paragraph that show the result */
 /* #result {} */
 
-
 #check-btn {
     height: 31px;
     width: 80px;
@@ -76,6 +75,7 @@ main h1 {
     width: 250px;
     padding: 0 5px;
     border-radius: 4px;
+    outline: none;
     border: 1px solid rgba(166, 188, 218, 1);
 }
 
@@ -92,7 +92,7 @@ main h1 {
 
 
 #text-input:focus {
-    border-color: rgba(53, 70, 101, 1);
+    border: 1.5px solid rgba(0, 119, 238, 1);
 }
 
 

@@ -30,7 +30,7 @@ function operation() {
     setTimeout(() => {
         textInput.value = "";  // clears the input
         result.innerText = "";  // clears the result
-    }, 60000);
+    }, 30000);
 }
 
 
