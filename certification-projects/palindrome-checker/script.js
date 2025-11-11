@@ -2,14 +2,14 @@ const textInput = document.getElementById("text-input");
 const checkBtn = document.getElementById("check-btn");
 const result = document.getElementById("result");
 
-
+// clean the text input
 const cleanText = (text) => {
     const regex = /[^a-zA-Z0-9]/g;
     const cleanedText = text.replace(regex, '');
     return cleanedText
 }
 
-
+// reverse the text input
 const reverseFunction = (text) => {
     const reversedText = text.toLowerCase().split("").reverse().join("");
     return reversedText;
