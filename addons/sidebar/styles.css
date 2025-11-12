@@ -12,3 +12,82 @@ body {
     min-height: 100vh;
     background: linear-gradient(#F1FAFF, #CBE4FF);
 }
+
+.sidebar {
+    width: 270px;
+    position: fixed;
+    margin: 16px;
+    border-radius: 16px;
+    background: #151A2D;
+    height: calc(100vh - 32px);
+}
+
+.sidebar-header {
+    display: flex;
+    padding: 25px 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-header .header-logo img {
+    width: 46px;
+    height: 46px;
+    display: block;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.sidebar-header .toggler {
+    height: 35px;
+    width: 35px;
+    border: none;
+    color: #151A2D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+    background: #fff;
+    transition: 0.4s ease;
+}
+
+.sidebar-header .toggler:hover {
+    background: #dde4fb;
+
+}
+
+.sidebar-header .toggler span {
+    font-size: 1.75rem;
+}
+
+.sidebar-nav .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 4px;
+    padding: 0 15px;
+    flex-direction: column;
+    transform: translateY(15px);
+}
+
+
+.sidebar-nav .nav-link {
+    color: #fff;
+    padding: 12px 15px;
+    display: flex;
+    gap: 12px;
+    border-radius: 8px;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.4s ease;
+}
+
+.sidebar-nav .nav-link:hover {
+    color: #151A2D;
+    background: #fff;
+}
+
+.sidebar-nav .secondary-nav {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+}
