@@ -4,7 +4,6 @@ const output = document.getElementById("output");
 const msgContainer = document.getElementById("error-message");
 
 const numeralToRoman = [
-    [0, ""],
     [1, "I"],
     [4, "IV"],
     [5, "V"],
@@ -24,7 +23,7 @@ const inputChecker = (input) => {
     if (input === "") {
         output.innerText = "Please enter a valid number";
         return false;
-    } else if (parseInt(input) <= -1) {
+    } else if (parseInt(input) < 0) {
         output.innerText = "Please enter a number greater than or equal to 1";
         return false;
     } else if (parseInt(input) > 4000) {
@@ -35,30 +34,16 @@ const inputChecker = (input) => {
 }
 
 const convertNumeralToRoman = (input) => {
-    const convertedNumber = [];
-    const numberAsArray = input.split("");
+    let inputNumber = parseInt(input);
+    let result = "";
 
-    const numberalAsArray = numberAsArray.map((digit, index) => {
-        const zeros = numberAsArray.length - index - 1;
-        return digit + '0'.repeat(zeros);
-    })
-    // Print the retuern array by map on 
-    console.log(numberalAsArray);
-
-    // for (let number of numberalAsArray) {
-    //     console.log(number);
-    //     for (let roman of numeralToRoman) {
-    //         if (number == roman[1]) {
-    //             convertedNumber.push(roman[0]);
-    //         }
-    //         console.log(number);
-
-
-    //     }
-    // }
-    // console.log(convertedNumber);
-
-    return input;
+    for (const [number, roman] of numeralToRoman) {
+        if (inputNumber === number) {
+            // console.log(roman);
+            result += roman
+        }
+    }
+    return result;
 }
 
 convertBtn.addEventListener("click", () => {
@@ -68,3 +53,41 @@ convertBtn.addEventListener("click", () => {
     output.innerText = convertNumeralToRoman(numberInput.value);
     numberInput.value = "";
 });
+
+
+
+
+
+// const convertNumeralToRoman = (input) => {
+//     const convertedNumber = [];
+//     const numberAsArray = input.split("");
+
+//     const numberalAsArray = numberAsArray.map((digit, index) => {
+//         const zeros = numberAsArray.length - index - 1;
+//         return digit + '0'.repeat(zeros);
+//     })
+//     // Print the return array by map on 
+//     console.log(numberalAsArray);
+//     outer:
+//     for (let i = 0; i < numberalAsArray.length; i++) {
+//         console.log(numberalAsArray[i]);
+//         inner:
+//         for (let j = 0; j < numeralToRoman.length; j++) {
+//             if (parseInt(numberalAsArray[i]) == numeralToRoman[j][0]) {
+//                 convertedNumber.push(numeralToRoman[j][1]);
+//             } 
+//             else {
+//                 convertedNumber.push("Number");
+//                 break inner;
+//             }
+//         }
+//     }
+
+//     // console.log(numberalAsArray);
+
+//     console.log(convertedNumber);
+//     const result = convertedNumber.join('');
+//     // console.log(result);
+
+//     return result;
+// }
