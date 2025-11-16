@@ -42,20 +42,21 @@ const convertNumeralToRoman = (input) => {
         const zeros = numberAsArray.length - index - 1;
         return digit + '0'.repeat(zeros);
     })
+    // Print the retuern array by map on 
     console.log(numberalAsArray);
 
-    for (let number of numberalAsArray) {
-        console.log(number);
-        for (let roman of numeralToRoman) {
-            if (number == roman[1]) {
-                convertedNumber.push(roman[0]);
-            }
-            console.log(number);
+    // for (let number of numberalAsArray) {
+    //     console.log(number);
+    //     for (let roman of numeralToRoman) {
+    //         if (number == roman[1]) {
+    //             convertedNumber.push(roman[0]);
+    //         }
+    //         console.log(number);
 
 
-        }
-    }
-    console.log(convertedNumber);
+    //     }
+    // }
+    // console.log(convertedNumber);
 
     return input;
 }
