@@ -33,41 +33,6 @@ const inputChecker = (input) => {
     return true;
 }
 
-// const convertNumeralToRoman = (input) => {
-//     const convertedNumber = [];
-//     const numberAsArray = input.split("");
-
-//     const numberalAsArray = numberAsArray.map((digit, index) => {
-//         const zeros = numberAsArray.length - index - 1;
-//         return digit + '0'.repeat(zeros);
-//     });
-
-//     for (let i = 0; i < numberalAsArray.length; i++) {
-//         for (const [number, roman] of numeralToRoman) {
-//             if (numberalAsArray) {
-
-//             }
-//         }
-
-//     }
-//     // Print the retuern array by map on 
-//     console.log(numberalAsArray);
-//     for (let i = 0; i < numberalAsArray.length; i++) {
-//         // console.log(numberalAsArray[i]);
-//         // inner:
-//         for (const [number, roman] of numeralToRoman) {
-//             if (numberalAsArray[i] == number) {
-//                 console.log(roman);
-//                 convertedNumber.push(roman);
-//             }
-
-//         }
-//     }
-
-//     console.log(convertedNumber);
-
-//     // return convertedNumber.join('');
-// }
 
 const convertNumeralToRoman = (input) => {
     let result = [];
@@ -84,8 +49,8 @@ const convertNumeralToRoman = (input) => {
             remaining -= value;
         }
     }
-    output.style.border = "1px solid rgba(104, 250, 67, 0.61)";
-    output.style.color = "rgba(48, 175, 16, 0.61)";
+    output.style.border = "1px solid rgba(30, 107, 11, 0.61)";
+    output.style.color = "rgba(32, 117, 11, 0.61)";
     output.style.background = "rgba(228, 255, 225, 1)";
     return result.join('');
 };
