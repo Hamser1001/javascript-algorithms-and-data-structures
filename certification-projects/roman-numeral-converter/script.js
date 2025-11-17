@@ -21,12 +21,12 @@ const numeralToRoman = [
 
 
 const convertNumeralToRoman = (input) => {
-    let num = parseInt(input);
+    
     const result = [];
     numeralToRoman.forEach((array) => {
-        while (num >= array[0]) {
+        while (input >= array[0]) {
             result.push(array[1]);
-            num -= array[0];
+            input -= array[0];
         }
     });
     console.log(result);
