@@ -23,10 +23,12 @@ const inputChecker = (input) => {
     if (input === "") {
         output.innerText = "Please enter a valid number";
         return false;
-    } else if (parseInt(input) <= -1) {
+    }
+    if (parseInt(input) <= -1) {
         output.innerText = "Please enter a number greater than or equal to 1";
         return false;
-    } else if (parseInt(input) > 4000) {
+    }
+    if (parseInt(input) > 3999) {
         output.innerText = "Please enter a number less than or equal to 3999";
         return false;
     }
@@ -49,16 +51,29 @@ const convertNumeralToRoman = (input) => {
             remaining -= value;
         }
     }
-    output.style.border = "1px solid rgba(30, 107, 11, 0.61)";
-    output.style.color = "rgba(32, 117, 11, 0.61)";
-    output.style.background = "rgba(228, 255, 225, 1)";
+
     return result.join('');
 };
 
 convertBtn.addEventListener("click", () => {
+    showUI();
+});
+
+const showUI = () => {
     msgContainer.style.display = 'flex';
-    if (!inputChecker(numberInput.value)) return;
-    // console.log(convertNumeralToRoman(numberInput.value));
-    output.innerText = convertNumeralToRoman(numberInput.value);
+    if (!inputChecker(numberInput.value)) {
+        // inputChecker(numberInput.value);
+        return;
+    };
+    output.style.border = "1px solid rgba(30, 107, 11, 0.61)";
+    output.style.color = "rgba(32, 117, 11, 0.61)";
+    output.style.background = "rgba(228, 255, 225, 1)";
+    output.innerText = convertNumeralToRoman(Number(numberInput.value));
     numberInput.value = "";
+}
+
+numberInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        showUI();
+    }
 });
