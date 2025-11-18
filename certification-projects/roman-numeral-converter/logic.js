@@ -62,7 +62,9 @@ convertBtn.addEventListener("click", () => {
 const showUI = () => {
     msgContainer.style.display = 'flex';
     if (!inputChecker(numberInput.value)) {
-        // inputChecker(numberInput.value);
+        output.style.border = "1px solid rgba(250, 67, 67, 0.61)";
+        output.style.color = "rgb(255, 23, 23)";
+        output.style.background = "rgb(255, 225, 225)";
         return;
     };
     output.style.border = "1px solid rgba(30, 107, 11, 0.61)";
