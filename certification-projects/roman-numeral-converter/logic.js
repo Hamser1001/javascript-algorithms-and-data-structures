@@ -44,9 +44,9 @@ const convertNumeralToRoman = (input) => {
 
     for (let [value, roman] of numeralToRoman) {
         // to see value and roman each time
-        console.log(`value: ${value}, roman: ${roman}, remaining: ${remaining}`)
+        // console.log(`value: ${value}, roman: ${roman}, remaining: ${remaining}`)
         while (remaining >= value) {
-            console.log(`Roman: ${roman}`)
+            // console.log(`Here the value should change, value: ${value}, roman: ${roman}, remaining: ${remaining}`);
             result.push(roman);
             remaining -= value;
         }
@@ -65,6 +65,7 @@ const showUI = () => {
         output.style.border = "1px solid rgba(250, 67, 67, 0.61)";
         output.style.color = "rgb(255, 23, 23)";
         output.style.background = "rgb(255, 225, 225)";
+        numberInput.value = "";
         return;
     };
     output.style.border = "1px solid rgba(30, 107, 11, 0.61)";
