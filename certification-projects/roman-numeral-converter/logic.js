@@ -51,7 +51,6 @@ const convertNumeralToRoman = (input) => {
             remaining -= value;
         }
     }
-
     return result.join('');
 };
 
