@@ -31,9 +31,18 @@ const getRange = (array) => {
 
 const getVariance = (array) => {
     const mean = getMean(array);
-    const differences = array.map(
-        el => el - mean
-    );
+    const variance = array.reduce((acc, el) => {
+        const difference = el - mean;
+        const squared = difference ** 2;
+        return acc + squared;
+    }, 0) / array.length;
+    return variance;
+}
+
+const getStandardDeviation = (array) => {
+    const variance = getVariance(array);
+    const standardDeviation = Math.sqrt(variance);
+    return standardDeviation;
 }
 
 const calculate = () => {
@@ -45,9 +54,13 @@ const calculate = () => {
     const median = getMedian(numbers);
     const mode = getMode(numbers);
     const range = getRange(numbers);
+    const variance = getVariance(numbers);
+
 
     document.querySelector("#mean").textContent = mean;
     document.querySelector("#median").textContent = median;
     document.querySelector("#mode").textContent = mode;
     document.querySelector("#range").textContent = range;
+    document.querySelector("#variance").textContent = variance;
+
 }
