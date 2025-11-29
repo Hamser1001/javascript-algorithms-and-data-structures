@@ -13,12 +13,20 @@ const checkBtn = document.getElementById("check-btn");
 const clearBtn = document.getElementById("clear-btn");
 const result = document.getElementById("results-div");
 
+const regex = /1?\s*\(?\d{3}\)?\-?\s*\d{3}\-?\s*\d{4}/;
+
 checkBtn.addEventListener("click", () => {
-    if (userInput.value === "") {
+    if (userInput.value == "") {
         alert("Please provide a phone number");
     }
+
+    if (regex.test(userInput.value)) {
+        result.innerText = "Valid US number: " + userInput.value;
+    } else {
+        result.innerText = "Invalid US number: " + userInput.value;
+    }
     console.log(userInput.value);
-    result.innerText = userInput.value;
+    // result.innerText = userInput.value;
 })
 
 clearBtn.addEventListener("click", () => {
