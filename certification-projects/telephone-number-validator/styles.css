@@ -2,6 +2,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     border-radius: 1px solid black;
     padding: 0;
     margin: 0;
@@ -14,6 +15,7 @@ main {
     align-items: center; */
     box-sizing: border-box;
     margin: 20px;
+    margin-top: 150px;
 
 }
 
@@ -21,13 +23,14 @@ main {
 
 #checker-div {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-direction: column;
     background: rgba(114, 57, 234, 1);
     border-radius: 16px;
-    height: 400px;
+    height: 40vh;
     width: 300px;
+    padding-top: 50px;
 }
 
 
@@ -51,7 +54,7 @@ h1 {
 }
 
 #results-div {
-    height: 100px;
+    /* height: 50px; */
     width: 250px;
     /* background-color: blue; */
     margin: 18px auto;
@@ -81,4 +84,15 @@ button {
     border-radius: 4px;
     font-family: "Inter", sans-serif;
     font-size: 16px;
+}
+
+#results-div {
+    color: rgba(255, 255, 255, 1);
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0px;
+    margin: 18px auto;
+    text-align: center;
 }
