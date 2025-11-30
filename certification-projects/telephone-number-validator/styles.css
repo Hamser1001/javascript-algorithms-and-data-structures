@@ -28,7 +28,7 @@ main {
     flex-direction: column;
     background: rgba(114, 57, 234, 1);
     border-radius: 16px;
-    height: 40vh;
+    height: auto;
     width: 300px;
     padding-top: 50px;
 }
@@ -84,7 +84,7 @@ button {
     border-radius: 4px;
     font-family: "Inter", sans-serif;
     font-size: 16px;
-    transition: background 100ms ease;
+    margin-bottom: 50px;
 }
 
 #results-div {
