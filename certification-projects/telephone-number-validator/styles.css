@@ -61,6 +61,7 @@ h1 {
 }
 
 #user-input {
+    box-sizing: border-box;
     /* margin: auto; */
     padding: 0 5px;
     width: 250px;
