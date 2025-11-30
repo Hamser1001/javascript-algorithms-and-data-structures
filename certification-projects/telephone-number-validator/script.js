@@ -13,7 +13,7 @@ const checkBtn = document.getElementById("check-btn");
 const clearBtn = document.getElementById("clear-btn");
 const result = document.getElementById("results-div");
 
-const regex = /1?\s*\(?\d{3}\)?\-?\s*\d{3}\-?\s*\d{4}/;
+const regex = /1?\s*\(\d{3}\)|d{3}\-?\s*\d{3}\-?\s*\d{4}/;
 
 checkBtn.addEventListener("click", () => {
     if (userInput.value == "") {
