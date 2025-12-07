@@ -50,6 +50,8 @@ class Player {
             this.position.x = this.width;
         }
 
-
+        if (this.position.x >= canvas.width - this.width * 2) {
+            this.position.x = canvas.width - this.width * 2;
+        }
     }
 }
