@@ -110,6 +110,10 @@ const animate = () => {
         player.velocity.x = 0;
 
 
+        if (keys.rightKey.pressed && isCheckpointCollisionDetectionActive) {
+            platforms.forEach(platform => platform.position.x -= 5);
+        }
+
     }
 }
 
