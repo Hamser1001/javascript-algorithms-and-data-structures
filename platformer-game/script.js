@@ -90,7 +90,6 @@ const movePlayer = (key, xVelocity, isPressed) => {
         return;
     }
 
-
     switch (key) {
         case "ArrowLeft":
             keys.leftKey.pressed = isPressed;
@@ -99,9 +98,18 @@ const movePlayer = (key, xVelocity, isPressed) => {
             }
             player.velocity.x -= xVelocity;
             break;
-
+        case "ArrowUp":
+        case " ":
+        case "Spacebar":
+            player.velocity.y -= 8;
+            break;
+        case "ArrowRight":
+            keys.rightKey.pressed = isPressed;
+            if (xVelocity === 0) {
+                player.velocity.x = xVelocity;
+            }
+            player.velocity.x += xVelocity;
     }
-
 }
 
 
@@ -112,3 +120,5 @@ const startGame = () => {
 }
 
 startBtn.addEventListener("click", startGame);
+
+window.addEventListener("keydown", ({ key }) => { })
