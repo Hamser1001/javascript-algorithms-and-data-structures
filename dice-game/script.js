@@ -29,8 +29,65 @@ const rollDice = () => {
     });
 };
 
+const updateStats = () => {
+    rollsElement.textContent = rolls;
+    roundElement.textContent = round;
+};
+
+const updateRadioOption = (index, score) => {
+    scoreInputs[index].disabled = false;
+    scoreInputs[index].value = score;
+    scoreSpans[index].textContent = `, score = ${score}`;
+};
+
+const getHighestDuplicates = (array) => {
+    let track = {};
+
+    array.forEach((element) => {
+        if (!track[element]) {
+            track[element] = 1;
+        } else {
+            track[element] += 1;
+        }
+    });
+
+    let maxKey = null;
+    let maxValue = 0;
+
+    for (let key in track) {
+        if (track[key] > maxValue) {
+            maxValue = track[key];
+            maxKey = key;
+        }
+    }
+
+    if (maxValue >= 3) {
+        score = array.reduce((acc, value) => acc + value, 0);
+        if (maxValue === 3) {
+            updateRadioOption(0, score);
+        } else {
+            updateRadioOption(0, score);
+            updateRadioOption(1, score);
+        }
+    } else {
+        score = 0;
+        updateRadioOption(5, score);
+    }
+
+
+    console.log(track, maxKey, maxValue, score);
+};
+
 rollDiceBtn.addEventListener("click", () => {
-    rollDice();
+    if (rolls === 3) {
+        alert("You have made three rolls this round. Please select a score.");
+    } else {
+        rolls++;
+        rollDice();
+        updateStats();
+        getHighestDuplicates(diceValuesArr);
+
+    }
 });
 
 rulesBtn.addEventListener("click", () => {
