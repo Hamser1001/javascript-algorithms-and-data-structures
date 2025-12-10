@@ -118,3 +118,20 @@ rulesBtn.addEventListener("click", () => {
     }
 });
 
+keepScoreBtn.addEventListener("click", () => {
+
+    let selected = null;
+    for (let element of scoreInputs) {
+        if (element.checked) {
+            selected = element;
+            break;
+        }
+    }
+    if (!selected) {
+        alert("Please select an option.");
+        return;
+    }
+    updateScore(selected.value, selected.id);
+    totalScoreElement.innerText = score;
+    resetRadioOptions();
+});
