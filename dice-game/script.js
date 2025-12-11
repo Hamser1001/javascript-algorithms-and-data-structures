@@ -81,7 +81,7 @@ const getHighestDuplicates = (arr) => {
         updateRadioOption(0, sumOfAllDice);
     }
 
-    updateRadioOption(5, 0);
+
 };
 
 const detectFullHouse = (arr) => {
@@ -98,7 +98,7 @@ const detectFullHouse = (arr) => {
         updateRadioOption(2, 25);
     }
 
-    updateRadioOption(5, 0);
+
 };
 
 const checkForStraights = (arr) => {
@@ -117,7 +117,7 @@ const checkForStraights = (arr) => {
         updateRadioOption(4, 40);
     }
 
-    updateRadioOption(5, 0);
+
 };
 
 const resetRadioOptions = () => {
@@ -161,7 +161,7 @@ rollDiceBtn.addEventListener("click", () => {
         getHighestDuplicates(diceValuesArr);
         detectFullHouse(diceValuesArr);
         checkForStraights(diceValuesArr);
-
+        updateRadioOption(5, 0);
     }
 });
 
