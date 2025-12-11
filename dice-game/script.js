@@ -47,6 +47,7 @@ const updateScore = (selectedValue, achieved) => {
     scoreHistory.innerHTML += `<li>${achieved} : ${selectedValue}</li>`;
 };
 
+
 const getHighestDuplicates = (arr) => {
     const counts = {};
 
@@ -100,6 +101,25 @@ const detectFullHouse = (arr) => {
     updateRadioOption(5, 0);
 };
 
+const checkForStraights = (arr) => {
+    const sortedNumbersArr = arr.sort((a, b) => a - b);
+    const uniqueNumbersArr = [...new Set(sortedNumbersArr)];
+    const uniqueNumbersStr = uniqueNumbersArr.join("");
+
+    const smallStraightsArr = ["1234", "2345", "3456"];
+    const largeStraightsArr = ["12345", "23456"];
+
+    if (smallStraightsArr.some(straight => uniqueNumbersStr.includes(straight))) {
+        updateRadioOption(3, 30);
+    }
+
+    if (largeStraightsArr.includes(uniqueNumbersStr)) {
+        updateRadioOption(4, 40);
+    }
+
+    updateRadioOption(5, 0);
+};
+
 const resetRadioOptions = () => {
     scoreInputs.forEach((input) => {
         input.disabled = true;
@@ -130,43 +150,6 @@ const resetGame = () => {
     resetRadioOptions();
 };
 
-const checkForStraights = (arr) => {
-
-    // remove the diplicated numbers and sort the array
-    const uniqueArray = [...new Set(arr)].sort((a, b) => a - b);
-
-    // Check small straight
-    const smallStraight = [
-        [1, 2, 3, 4],
-        [2, 3, 4, 5],
-        [3, 4, 5, 6]
-    ];
-
-    for (const array of smallStraight) {
-        if (array.every(num => uniqueArray.includes(num))) {
-            updateRadioOption(3, 30);
-            break;
-        }
-    }
-
-    const largeStraight = [
-        [1, 2, 3, 4, 5],
-        [2, 3, 4, 5, 6]
-    ];
-
-    for (const array of largeStraight) {
-        if (array.every(num => uniqueArray.includes(num))) {
-            updateRadioOption(4, 40);
-            break;
-        }
-    }
-
-    updateRadioOption(5, 0);
-}
-
-
-
-
 rollDiceBtn.addEventListener("click", () => {
     if (rolls === 3) {
         alert("You have made three rolls this round. Please select a score.");
@@ -178,8 +161,11 @@ rollDiceBtn.addEventListener("click", () => {
         getHighestDuplicates(diceValuesArr);
         detectFullHouse(diceValuesArr);
         checkForStraights(diceValuesArr);
+
     }
 });
+
+
 
 rulesBtn.addEventListener("click", () => {
     isModalShowing = !isModalShowing;
