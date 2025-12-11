@@ -131,27 +131,39 @@ const resetGame = () => {
 };
 
 const checkForStraights = (arr) => {
-    const sortedArray = arr.sort((a, b) => a - b);
 
-    let smallStraight = [1, 2, 3, 4];
-    let largeStraight = [1, 2, 3, 4, 5];
+    // remove the diplicated numbers and sort the array
+    const uniqueArray = [...new Set(arr)].sort((a, b) => a - b);
 
-    let checkSmallStraight = ("," + arr.join(",") + ",").includes("," + smallStraight.join(",") + ",");
-    let checkLargeStraight = ("," + arr.join(",") + ",").includes("," + largeStraight.join(",") + ",");
+    // Check small straight
+    const smallStraight = [
+        [1, 2, 3, 4],
+        [2, 3, 4, 5],
+        [3, 4, 5, 6]
+    ];
 
-    if (checkSmallStraight) {
-        updateRadioOption(3, 30);
+    for (const array of smallStraight) {
+        if (array.every(num => uniqueArray.includes(num))) {
+            updateRadioOption(3, 30);
+            break;
+        }
     }
 
-    if (checkLargeStraight) {
-        updateRadioOption(4, 40);
+    const largeStraight = [
+        [1, 2, 3, 4, 5],
+        [2, 3, 4, 5, 6]
+    ];
+
+    for (const array of largeStraight) {
+        if (array.every(num => uniqueArray.includes(num))) {
+            updateRadioOption(4, 40);
+            break;
+        }
     }
 
     updateRadioOption(5, 0);
-
-    // console.log(sortedArray, checkSmallStraight, checkLargeStraight); 
-
 }
+
 
 
 
