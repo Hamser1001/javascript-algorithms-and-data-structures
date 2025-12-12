@@ -1,0 +1,64 @@
+root {
+    --Background: rgba(22, 22, 33, 1);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: auto;
+    height: 100vh;
+    background: linear-gradient(48.09deg, rgba(19.87, 69.94, 198.69, 1), rgba(96.95, 134.96, 232.69, 1) 100%);
+}
+
+main {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    width: 424px;
+    height: 593px;
+    padding: 25px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 1);
+}
+
+h1 {
+    margin: 5px;
+    color: rgba(53, 70, 101, 1);
+
+    font-family: "Roboto";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0px;
+    text-align: center;
+    /* color: white; */
+}
+
+#change-due {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+}
+
+#cash {
+    /* Frame 3052 */
+    width: 296px;
+    height: 30px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10;
+    padding: 5px;
+    margin: 10px;
+    box-sizing: border-box;
+    border: 1px solid rgba(166, 188, 218, 1);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 1);
+    outline: none;
+
+}
