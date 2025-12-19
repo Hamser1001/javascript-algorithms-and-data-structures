@@ -37,9 +37,16 @@ h1 {
 
 #change-due {
     height: 100px;
-    width: 100px;
+    min-width: 100px;
     margin: 15px;
     background-color: red;
+}
+
+#price-screen {
+    height: 100px;
+    min-width: 100px;
+    margin: 15px;
+    background-color: blue;
 }
 
 #cash {
@@ -67,7 +74,8 @@ h1 {
     font-family: "Roboto";
     font-size: 16px;
     gap: 10;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     padding: 10px 21px 10px 21px;
     color: rgba(255, 255, 255, 1);
     width: 296px;
