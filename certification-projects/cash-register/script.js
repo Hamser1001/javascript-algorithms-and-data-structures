@@ -12,7 +12,7 @@ One Hundred Dollars  $100.00 (ONE HUNDRED)
 */
 
 // DOM element references used for the cash register operation
-const changeDue = document.getElementById("change-due"); // Amount due for refund
+const displayChangeDue = document.getElementById("change-due"); // Amount due for refund
 const cash = document.getElementById("cash"); // Amount paid
 const purchaseBtn = document.getElementById("purchase-btn"); // Purchase button
 const priceScreen = document.getElementById("price-screen");
@@ -30,26 +30,50 @@ let cid = [
     ['ONE HUNDRED', 100]
 ];
 
-let obj = {}
+const displayCid = () => {
+    let objectCid = {
+        "PENNY": "Penny",
+        "NICKEL": "Nickel",
+        "DIME": "Dime",
+        "QUARTER": "Quarter",
+        "ONE": "One",
+        "FIVE": "Five",
+        "TEN": "Ten",
+        "TWENTY": "Twenty",
+        "ONE HUNDRED": "OneHundred"
+    };
+
+    const list = document.createElement('ul');
+    priceScreen.appendChild(list);
 
 
-const calculateChange = () => {
-    cid.forEach((element) => {
-        obj[element[0]] = element[1];
-        console.log(element[0]);
-    })
-
-    for (const key in obj) {
-        console.log(`this is a key: ${key}`);
-
+    for (let i = 0; i < cid.length; i++) {
+        console.log(i);
+        list.innerHTML += `<li></li>${objectCid[cid[i][0]]}: $<span>${cid[i][1]}</span></li>`;
     }
-    console.log(`obj is : ${obj}`)
+
+
 }
 
 
+// const calculateChange = () => {
+//     cid.forEach((element) => {
+//         obj[element[0]] = element[1];
+//         console.log(element[0]);
+//     })
+
+//     for (const key in obj) {
+//         console.log(`this is a key: ${key}`);
+
+//     }
+//     console.log(`obj is : ${obj}`)
+// }
+
+displayCid();
 purchaseBtn.addEventListener("click", () => {
-    calculateChange();
+    // calculateChange();
+
     // to know the button works
-    console.log("Clicked");
-    changeDue.innerHTML += `<p>Clicked</p>`;
+    // console.log("Clicked");
+    displayChangeDue.innerHTML += `<p>Clicked</p>`;
 })
