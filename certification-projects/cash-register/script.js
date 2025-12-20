@@ -31,7 +31,7 @@ let cid = [
 ];
 
 const displayCid = () => {
-    let objectCid = {
+    const objectCid = {
         "PENNY": "Penny",
         "NICKEL": "Nickel",
         "DIME": "Dime",
@@ -42,13 +42,16 @@ const displayCid = () => {
         "TWENTY": "Twenty",
         "ONE HUNDRED": "OneHundred"
     };
+    const total = document.createElement('p');
+    priceScreen.appendChild(total);
 
     const list = document.createElement('ul');
     priceScreen.appendChild(list);
 
+    total.innerHTML = `<h1>Total: ${price}</h1>`;
+
 
     for (let i = 0; i < cid.length; i++) {
-        console.log(i);
         list.innerHTML += `<li></li>${objectCid[cid[i][0]]}: $<span>${cid[i][1]}</span></li>`;
     }
 
@@ -59,5 +62,5 @@ const displayCid = () => {
 
 displayCid();
 purchaseBtn.addEventListener("click", () => {
-    displayChangeDue.innerHTML += `<p>Clicked</p>`;
+    displayChangeDue.innerHTML += `<p class="clicked">Clicked</p>`;
 })

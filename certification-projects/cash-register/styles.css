@@ -44,7 +44,7 @@ h2 {
     color: rgb(0, 0, 0);
 }
 
-p {
+.clicked {
     margin: 5px;
     color: rgb(66, 124, 182);
     font-family: "Roboto";
@@ -55,9 +55,6 @@ p {
 }
 
 ul {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     text-align: center;
     flex-direction: column;
     padding-left: 0;
