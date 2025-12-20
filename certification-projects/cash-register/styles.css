@@ -133,3 +133,7 @@ li {
     font-size: 16px;
     font-weight: 500;
 }
+
+#purchase-btn:hover {
+    background: rgb(15, 15, 15);
+}

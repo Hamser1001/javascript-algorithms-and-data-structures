@@ -32,7 +32,7 @@ let cid = [
 
 // Display Change in drawer
 const displayCid = () => {
-    const objectCid = {
+    const currencyLabels = {
         "PENNY": "Penny",
         "NICKEL": "Nickel",
         "DIME": "Dime",
@@ -55,13 +55,37 @@ const displayCid = () => {
 
     // Display the list items on the screen
     for (let i = 0; i < cid.length; i++) {
-        list.innerHTML += `<li class="currency-unit">${objectCid[cid[i][0]]}: $<span>${cid[i][1]}</span></li>`;
+        list.innerHTML += `<li class="currency-unit">${currencyLabels[cid[i][0]]}: $<span>${cid[i][1]}</span></li>`;
     }
 }
 
+// Calculate the change Due
+const calculateChangeDue = (cash.value - price).toFixed(2);
+
+const calculate = () => {
+    const currencyUnit = {
+        PENNY: { label: "Penny", value: 0.01 },
+        NICKEL: { label: "Nickel", value: 0.05 },
+        DIME: { label: "Dime", value: 0.10 },
+        QUARTER: { label: "Quarter", value: 0.25 },
+        ONE: { label: "One", value: 1.00 },
+        FIVE: { label: "Five", value: 5.00 },
+        TEN: { label: "Ten", value: 10.00 },
+        TWENTY: { label: "Twenty", value: 20.00 },
+        "ONE HUNDRED": { label: "One Hundred", value: 100.00 }
+    };
+}
 
 
+// Display the CID
 displayCid();
+
 purchaseBtn.addEventListener("click", () => {
-    displayChangeDue.innerHTML += `<p class="clicked">Clicked</p>`;
+    if (cash.value < price) {
+        alert("Customer does not have enough money to purchase the item");
+        return;
+    }
+    displayChangeDue.innerHTML += `<p class="clicked">${calculateChangeDue()}</p>`;
+    console.log(calculateChangeDue());
+
 })
