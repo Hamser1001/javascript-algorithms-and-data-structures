@@ -56,24 +56,8 @@ const displayCid = () => {
 }
 
 
-// const calculateChange = () => {
-//     cid.forEach((element) => {
-//         obj[element[0]] = element[1];
-//         console.log(element[0]);
-//     })
-
-//     for (const key in obj) {
-//         console.log(`this is a key: ${key}`);
-
-//     }
-//     console.log(`obj is : ${obj}`)
-// }
 
 displayCid();
 purchaseBtn.addEventListener("click", () => {
-    // calculateChange();
-
-    // to know the button works
-    // console.log("Clicked");
     displayChangeDue.innerHTML += `<p>Clicked</p>`;
 })
