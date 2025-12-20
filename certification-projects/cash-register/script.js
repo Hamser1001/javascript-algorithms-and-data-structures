@@ -30,6 +30,7 @@ let cid = [
     ['ONE HUNDRED', 100]
 ];
 
+// Display Change in drawer
 const displayCid = () => {
     const objectCid = {
         "PENNY": "Penny",
@@ -42,20 +43,20 @@ const displayCid = () => {
         "TWENTY": "Twenty",
         "ONE HUNDRED": "OneHundred"
     };
+    // Create a p element to display the Total
     const total = document.createElement('p');
     priceScreen.appendChild(total);
 
+    // Create a unorderd list element to display the 
     const list = document.createElement('ul');
     priceScreen.appendChild(list);
 
     total.innerHTML = `<h1>Total: ${price}</h1>`;
 
-
+    // Display the list items on the screen
     for (let i = 0; i < cid.length; i++) {
-        list.innerHTML += `<li></li>${objectCid[cid[i][0]]}: $<span>${cid[i][1]}</span></li>`;
+        list.innerHTML += `<li class="currency-unit">${objectCid[cid[i][0]]}: $<span>${cid[i][1]}</span></li>`;
     }
-
-
 }
 
 

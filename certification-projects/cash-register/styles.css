@@ -41,7 +41,7 @@ h1 {
 
 h2 {
     font-size: 26px;
-    color: rgb(0, 0, 0);
+    color: rgb(43, 43, 43);
 }
 
 .clicked {
@@ -52,6 +52,14 @@ h2 {
     font-weight: 400;
     text-align: center;
     box-sizing: border-box;
+}
+
+.currency-unit {
+    margin: 5px;
+    color: rgb(43, 43, 43);
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: 700;
 }
 
 ul {
@@ -115,4 +123,13 @@ li {
     outline: none;
     border-radius: 4px;
     background: rgba(0, 119, 238, 1);
+}
+
+.label {
+    margin: 7px 0 0 0;
+    padding: 0;
+    color: rgb(43, 43, 43);
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: 500;
 }
