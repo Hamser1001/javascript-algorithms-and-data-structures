@@ -22,16 +22,17 @@ class CashRegister {
     constructor(cid, price) {
         this.cid = cid;
         this.price = price;
-        this.currencyLabels = {
-            "PENNY": "Penny",
-            "NICKEL": "Nickel",
-            "DIME": "Dime",
-            "QUARTER": "Quarter",
-            "ONE": "One",
-            "FIVE": "Five",
-            "TEN": "Ten",
-            "TWENTY": "Twenty",
-            "ONE HUNDRED": "OneHundred"
+        this.currency = {
+            // unit key will be added in next for loop
+            PENNY: { label: "Penny", value: 0.01 },
+            NICKEL: { label: "Nickel", value: 0.05 },
+            DIME: { label: "Dime", value: 0.10 },
+            QUARTER: { label: "Quarter", value: 0.25 },
+            ONE: { label: "One", value: 1.00 },
+            FIVE: { label: "Five", value: 5.00 },
+            TEN: { label: "Ten", value: 10.00 },
+            TWENTY: { label: "Twenty", value: 20.00 },
+            "ONE HUNDRED": { label: "One Hundred", value: 100.00 }
         };
     }
 
@@ -48,13 +49,13 @@ class CashRegister {
 
         // Display the list items on the screen
         for (let i = 0; i < this.cid.length; i++) {
-            list.innerHTML += `<li class="currency-unit">${this.currencyLabels[this.cid[i][0]]}: $<span>${this.cid[i][1]}</span></li>`;
+            list.innerHTML += `<li class="currency-unit">${this.currency[this.cid[i][0]].label}: $<span>${this.cid[i][1]}</span></li>`;
         }
     }
 
     calculate(amount) {
-        let result = {};
-        const currencyUnit = {
+        let changeDue = [];
+        let currencyUnit = {
             // unit key will be added in next for loop
             PENNY: { label: "Penny", value: 0.01 },
             NICKEL: { label: "Nickel", value: 0.05 },
@@ -67,29 +68,23 @@ class CashRegister {
             "ONE HUNDRED": { label: "One Hundred", value: 100.00 }
         };
 
-        console.log(amount);
-
+        // Calculate the unit for each currency
         for (let i = cid.length - 1; i >= 0; i--) {
             currencyUnit[cid[i][0]].unit = Math.floor(cid[i][1] / currencyUnit[cid[i][0]].value);
         }
+        console.log(currencyUnit);
 
-        // console.log(currencyUnit);
 
         for (let i = cid.length - 1; i >= 0; i--) {
-            // console.log(`
-            //     Amount: ${amount}, ${currencyUnit[cid[i][0]].value} 
-            //      Unit: ${currencyUnit[cid[i][0]].unit}
-            //     `)
-            result[cid[i][0]] = currencyUnit[cid[i][0]].value;
-            while (currencyUnit[cid[i][0]].unit > 0 && amount <= currencyUnit[cid[i][0]].value) {
-                currencyUnit[cid[i][0]].unit--;
-                console.log(`Value: ${currencyUnit[cid[i][0]].value}`);
-            }
+            // console.log(cid[i][0]); // label
+            // console.log(cid[i][1]); // value
+            // while () {
+
+            // }
         }
-        console.log(result);
-        console.log(currencyUnit);
     }
 }
+
 
 
 // Create an Object
@@ -120,6 +115,6 @@ purchaseBtn.addEventListener("click", () => {
 
     inputChecker(cashPaid, price);
     cashClass.calculate(calculateChangeDue);
-    displayChangeDue.innerHTML += `<p class="clicked">${cashPaid} - ${price} = ${calculateChangeDue}</p>`;
+    displayChangeDue.innerHTML += `<p class="clicked">Cash Paid: ${cashPaid} - Price: ${price} = Calculate Change Due: ${calculateChangeDue}</p>`;
 
 })
