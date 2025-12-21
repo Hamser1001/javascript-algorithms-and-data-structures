@@ -70,24 +70,24 @@ class CashRegister {
         console.log(amount);
 
         for (let i = cid.length - 1; i >= 0; i--) {
-            // console.log(cid[i][0]);
-            // console.log(currencyUnit[cid[i][0]].value);
             currencyUnit[cid[i][0]].unit = Math.floor(cid[i][1] / currencyUnit[cid[i][0]].value);
         }
-        console.log(currencyUnit);
+
+        // console.log(currencyUnit);
 
         for (let i = cid.length - 1; i >= 0; i--) {
-            console.log(`
-                Amount: ${amount}, ${currencyUnit[cid[i][0]].value} 
-                 Unit: ${currencyUnit[cid[i][0]].unit}
-                `)
+            // console.log(`
+            //     Amount: ${amount}, ${currencyUnit[cid[i][0]].value} 
+            //      Unit: ${currencyUnit[cid[i][0]].unit}
+            //     `)
             result[cid[i][0]] = currencyUnit[cid[i][0]].value;
-            // while (currencyUnit[cid[i][0]].unit > 0 && amount >= currencyUnit[cid[i][0]].value) {
-            //     // amount = amount - currencyUnit[cid[i][0]].value;
-            //     result[cid[i][0]] = currencyUnit[cid[i][0]].value;
-            // }
+            while (currencyUnit[cid[i][0]].unit > 0 && amount <= currencyUnit[cid[i][0]].value) {
+                currencyUnit[cid[i][0]].unit--;
+                console.log(`Value: ${currencyUnit[cid[i][0]].value}`);
+            }
         }
         console.log(result);
+        console.log(currencyUnit);
     }
 }
 
