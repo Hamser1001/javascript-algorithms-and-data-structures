@@ -55,32 +55,21 @@ class CashRegister {
 
     calculate(amount) {
         let changeDue = [];
-        let currencyUnit = {
-            // unit key will be added in next for loop
-            PENNY: { label: "Penny", value: 0.01 },
-            NICKEL: { label: "Nickel", value: 0.05 },
-            DIME: { label: "Dime", value: 0.10 },
-            QUARTER: { label: "Quarter", value: 0.25 },
-            ONE: { label: "One", value: 1.00 },
-            FIVE: { label: "Five", value: 5.00 },
-            TEN: { label: "Ten", value: 10.00 },
-            TWENTY: { label: "Twenty", value: 20.00 },
-            "ONE HUNDRED": { label: "One Hundred", value: 100.00 }
-        };
+
 
         // Calculate the unit for each currency
         for (let i = cid.length - 1; i >= 0; i--) {
-            currencyUnit[cid[i][0]].unit = Math.floor(cid[i][1] / currencyUnit[cid[i][0]].value);
+            this.currency[cid[i][0]].unit = Math.floor(cid[i][1] / this.currency[cid[i][0]].value);
         }
-        console.log(currencyUnit);
-
 
         for (let i = cid.length - 1; i >= 0; i--) {
-            // console.log(cid[i][0]); // label
-            // console.log(cid[i][1]); // value
-            // while () {
+            // console.log(this.currency[cid[i][0]].value);
+            while (this.currency[cid[i][0]].unit > 0 && this.currency[cid[i][0]].value <= amount) {
+                amount -= this.currency[cid[i][0]].value;
+                console.log(amount);
+                this.currency[cid[i][0]].unit--;
+            }
 
-            // }
         }
     }
 }
