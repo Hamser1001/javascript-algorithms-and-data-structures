@@ -57,12 +57,12 @@ class CashRegister {
         amount = Number(amount);
         let changeDue = {};
 
-
         // Calculate the unit for each currency
         for (let i = cid.length - 1; i >= 0; i--) {
             this.currency[cid[i][0]].unit = Number(Math.floor(cid[i][1] / this.currency[cid[i][0]].value));
         }
 
+        // Calculate the Due Change
         for (let i = cid.length - 1; i >= 0; i--) {
             while (this.currency[cid[i][0]].unit > 0 && this.currency[cid[i][0]].value <= amount) {
                 if (changeDue[cid[i][0]]) {
@@ -78,13 +78,8 @@ class CashRegister {
     }
 }
 
-
-
 // Create an Object
 const cashClass = new CashRegister(cid, price);
-
-
-
 
 // Input Checker
 const inputChecker = (cash, amount) => {
