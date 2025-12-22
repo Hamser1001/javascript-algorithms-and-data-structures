@@ -18,7 +18,7 @@ main {
     align-items: center;
     flex-direction: column;
     width: 424px;
-    height: 593px;
+    height: auto;
     padding: 25px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 1);
@@ -44,7 +44,7 @@ h2 {
     color: rgb(43, 43, 43);
 }
 
-.clicked {
+.display {
     margin: 5px;
     color: rgb(66, 124, 182);
     font-family: "Roboto";
@@ -52,6 +52,16 @@ h2 {
     font-weight: 400;
     text-align: center;
     box-sizing: border-box;
+}
+
+.status {
+    margin: 5px;
+    color: rgb(44, 228, 20);
+    font-family: "Roboto";
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+
 }
 
 .currency-unit {

@@ -17,105 +17,186 @@ let cid = [
     ['ONE HUNDRED', 100]
 ];
 
+// Currency values in dollars
+const currencyValues = {
+    "PENNY": 0.01,
+    "NICKEL": 0.05,
+    "DIME": 0.1,
+    "QUARTER": 0.25,
+    "ONE": 1,
+    "FIVE": 5,
+    "TEN": 10,
+    "TWENTY": 20,
+    "ONE HUNDRED": 100
+};
 
-class CashRegister {
-    constructor(cid, price) {
-        this.cid = cid;
-        this.price = price;
-        this.currency = {
-            // unit key will be added in next for loop
-            PENNY: { label: "Pennies", value: 0.01 },
-            NICKEL: { label: "Nickels", value: 0.05 },
-            DIME: { label: "Dimes", value: 0.10 },
-            QUARTER: { label: "Quarters", value: 0.25 },
-            ONE: { label: "Ones", value: 1.00 },
-            FIVE: { label: "Fives", value: 5.00 },
-            TEN: { label: "Tens", value: 10.00 },
-            TWENTY: { label: "Twenties", value: 20.00 },
-            "ONE HUNDRED": { label: "Hundreds", value: 100.00 }
-        };
-    }
+// Currency order for display
+const currencyOrder = [
+    "ONE HUNDRED", "TWENTY", "TEN", "FIVE", "ONE",
+    "QUARTER", "DIME", "NICKEL", "PENNY"
+];
 
-    // Display Change in drawer
-    displayCid() {
-        // Create a p element to display the TotalchangeDue
-        const total = document.createElement('p');
-        priceScreen.appendChild(total);
-        // Create a unorderd list element to display the 
-        const list = document.createElement('ul');
-        priceScreen.appendChild(list);
+// Display Change in drawer - show current cid
+function displayCid() {
+    priceScreen.innerHTML = '';
 
-        total.innerHTML = `<h1>Total: ${price}</h1>`;
+    // Create a h2 element to display the price
+    const total = document.createElement('h2');
+    priceScreen.appendChild(total);
 
-        // Display the list items on the screen
-        for (let i = 0; i < this.cid.length; i++) {
-            list.innerHTML += `<li class="currency-unit">${this.currency[this.cid[i][0]].label}: $<span>${this.cid[i][1]}</span></li>`;
-        }
-    }
+    // Create a unordered list element to display the currency
+    const list = document.createElement('ul');
+    priceScreen.appendChild(list);
 
-    calculateChangeDue(amount) {
-        amount = Number(amount);
-        let changeDue = {};
+    // Display the price (not total cash)
+    total.textContent = `Price: $${price.toFixed(2)}`;
 
-        // Calculate the unit for each currency
-        for (let i = cid.length - 1; i >= 0; i--) {
-            this.currency[cid[i][0]].unit = Number(Math.floor(cid[i][1] / this.currency[cid[i][0]].value));
-        }
-
-        // Calculate the Due Change
-        for (let i = cid.length - 1; i >= 0; i--) {
-            while (this.currency[cid[i][0]].unit > 0 && this.currency[cid[i][0]].value <= amount) {
-                if (changeDue[cid[i][0]]) {
-                    changeDue[cid[i][0]].unit++;
-                } else {
-                    changeDue[cid[i][0]] = { label: this.currency[cid[i][0]].label, value: this.currency[cid[i][0]].value, unit: 1 };
-                }
-                amount -= Number(this.currency[cid[i][0]].value.toFixed(2));
-                this.currency[cid[i][0]].unit--;
-            }
-        }
-
-        console.log(this.cid);
-        console.log(changeDue);
-        displayChangeDue.innerHTML = "";
+    // Display the list items on the screen in highest to lowest order
+    for (let currency of currencyOrder) {
+        // Find this currency in cid
         for (let i = 0; i < cid.length; i++) {
-            if (changeDue[cid[i][0]]) {
-                // console.log(changeDue[cid[i][0]]);
-                cid[i][1] = Number((cid[i][1] - changeDue[cid[i][0]].value * changeDue[cid[i][0]].unit).toFixed(2));
-                console.log(`${cid[i][1]} - ${changeDue[cid[i][0]].value} * ${changeDue[cid[i][0]].unit} = ${cid[i][1] - changeDue[cid[i][0]].value * changeDue[cid[i][0]].unit}`);
-                displayChangeDue.innerHTML += `<p class="clicked">${cid[i][0]}: $${changeDue[cid[i][0]].value * changeDue[cid[i][0]].unit}</p>`;
+            if (cid[i][0] === currency) {
+                const listItem = document.createElement('li');
+                listItem.className = "currency-unit";
+                listItem.textContent = `${cid[i][0]}: $${cid[i][1].toFixed(2)}`;
+                list.appendChild(listItem);
+                break;
             }
         }
-        console.log(this.cid);
-        priceScreen.innerHTML = "";
-        this.displayCid();
     }
 }
 
-// Create an Object
-const cashClass = new CashRegister(cid, price);
+// Main purchase function
+purchaseBtn.addEventListener("click", () => {
+    const cashGiven = parseFloat(cash.value);
 
-// Input Checker
-const inputChecker = (cash, amount) => {
-    if (cash < amount) {
+    // Clear previous result
+    displayChangeDue.innerHTML = '';
+
+    // Input validation
+    if (isNaN(cashGiven) || cashGiven < 0) {
+        alert("Please enter a valid cash amount");
+        return;
+    }
+
+    // Check if customer has enough money
+    if (cashGiven < price) {
         alert("Customer does not have enough money to purchase the item");
         return;
     }
-    if (cash === amount) {
-        displayChangeDue.innerHTML = "No change due - customer paid with exact cash";
+
+    // Check if customer paid exact amount
+    if (cashGiven === price) {
+        displayChangeDue.innerHTML = '<p class="display">No change due - customer paid with exact cash</p>';
         return;
     }
-}
 
-// Display the CID
-cashClass.displayCid();
+    // Calculate change due
+    let changeDue = parseFloat((cashGiven - price).toFixed(2));
 
-purchaseBtn.addEventListener("click", () => {
-    // Calculate the change Due
-    const cashPaid = Number(cash.value).toFixed(2); // 1.87
-    let calculateChangeDueTotal = Number((cashPaid - price).toFixed(2));
+    // Create a working copy of cid for calculation
+    let tempCid = cid.map(arr => [...arr]);
+    const totalCid = parseFloat(tempCid.reduce((sum, item) => sum + item[1], 0).toFixed(2));
 
-    inputChecker(cashPaid, price);
-    cashClass.calculateChangeDue(calculateChangeDueTotal);
+    // Calculate change
+    let changeArray = [];
+    let remainingChange = changeDue;
 
-})
+    // Calculate change from highest to lowest denomination
+    for (let denom of currencyOrder) {
+        const value = currencyValues[denom];
+        let available = 0;
+
+        // Find available amount for this denomination
+        for (let i = 0; i < tempCid.length; i++) {
+            if (tempCid[i][0] === denom) {
+                available = tempCid[i][1];
+                break;
+            }
+        }
+
+        if (available === 0) continue;
+
+        // Calculate how much of this denomination we can give
+        const maxUnits = Math.floor(available / value);
+        const neededUnits = Math.floor(remainingChange / value);
+        const unitsToGive = Math.min(maxUnits, neededUnits);
+
+        if (unitsToGive > 0) {
+            const amount = parseFloat((unitsToGive * value).toFixed(2));
+            changeArray.push([denom, amount]);
+            remainingChange = parseFloat((remainingChange - amount).toFixed(2));
+
+            // Update tempCid
+            for (let i = 0; i < tempCid.length; i++) {
+                if (tempCid[i][0] === denom) {
+                    tempCid[i][1] = parseFloat((tempCid[i][1] - amount).toFixed(2));
+                    break;
+                }
+            }
+        }
+
+        if (remainingChange === 0) break;
+    }
+
+    // Determine status
+    let status = "";
+    let displayHTML = "";
+
+    if (remainingChange > 0) {
+        // Cannot make exact change
+        status = "INSUFFICIENT_FUNDS";
+        displayHTML = `<p class="status">Status: ${status}</p>`;
+    } else if (totalCid === changeDue) {
+        // Drawer will be empty after transaction
+        status = "CLOSED";
+        displayHTML = `<p class="status">Status: ${status}</p>`;
+        // For CLOSED status, show denominations in cid order (not highest to lowest)
+        for (let i = 0; i < cid.length; i++) {
+            const denom = cid[i][0];
+            let amountGiven = 0;
+            for (let j = 0; j < changeArray.length; j++) {
+                if (changeArray[j][0] === denom) {
+                    amountGiven = changeArray[j][1];
+                    break;
+                }
+            }
+            if (amountGiven > 0) {
+                displayHTML += `<p class="display">${denom}: $${amountGiven.toFixed(2)}</p>`;
+            }
+        }
+        // Update the actual cid for future transactions
+        cid = tempCid;
+    } else {
+        // Normal case
+        status = "OPEN";
+        displayHTML = `<p class="status">Status: ${status}</p>`;
+        // For OPEN status, show denominations in highest to lowest order
+        changeArray.sort((a, b) => currencyValues[b[0]] - currencyValues[a[0]]);
+        for (let item of changeArray) {
+            displayHTML += `<p class="display">${item[0]}: $${item[1].toFixed(2)}</p>`;
+        }
+        // Update the actual cid for future transactions
+        cid = tempCid;
+    }
+
+    // Update the display with HTML
+    displayChangeDue.innerHTML = displayHTML;
+
+    // Also update the text content for testing purposes
+    // This creates a plain text version without HTML tags
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = displayHTML;
+    const plainText = tempDiv.textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+    displayChangeDue.dataset.testContent = plainText;
+});
+
+// Allow pressing Enter in the cash input
+cash.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        purchaseBtn.click();
+    }
+});
+
+// Initial display
+displayCid();
