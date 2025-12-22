@@ -66,11 +66,17 @@ class CashRegister {
         for (let i = cid.length - 1; i >= 0; i--) {
             // console.log(this.currency[cid[i][0]].value);
             while (this.currency[cid[i][0]].unit > 0 && this.currency[cid[i][0]].value <= amount) {
-                console.log(`${amount.toFixed(2)}, `);
+                // if (changeDue) {
+                    
+                // }
+                changeDue.push([cid[i][0], ""]);
+                // console.log(`${this.currency[cid[i][0]].label}`);
+                // console.log(`${amount.toFixed(2)}, ${this.currency[cid[i][0]].value}`);
                 amount -= this.currency[cid[i][0]].value;
                 this.currency[cid[i][0]].unit--;
             }
         }
+        console.log(changeDue);
     }
 }
 
