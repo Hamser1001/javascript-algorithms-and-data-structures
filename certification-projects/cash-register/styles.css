@@ -77,10 +77,10 @@ li {
 }
 
 #change-due {
-    height: 210px;
+    height: auto;
     min-width: 100px;
     margin: 15px;
-    overflow: hidden;
+    /* overflow: hidden; */
     /* background-color: red; */
 }
 
