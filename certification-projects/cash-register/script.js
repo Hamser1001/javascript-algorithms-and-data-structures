@@ -55,23 +55,21 @@ class CashRegister {
 
     calculate(amount) {
         amount = Number(amount);
-        let changeDue = [];
+        let changeDue = {};
 
 
         // Calculate the unit for each currency
         for (let i = cid.length - 1; i >= 0; i--) {
-            this.currency[cid[i][0]].unit = Math.floor(cid[i][1] / this.currency[cid[i][0]].value);
+            this.currency[cid[i][0]].unit = Number(Math.floor(cid[i][1] / this.currency[cid[i][0]].value));
         }
 
         for (let i = cid.length - 1; i >= 0; i--) {
-            // console.log(this.currency[cid[i][0]].value);
             while (this.currency[cid[i][0]].unit > 0 && this.currency[cid[i][0]].value <= amount) {
-                // if (changeDue) {
-                    
-                // }
-                changeDue.push([cid[i][0], ""]);
-                // console.log(`${this.currency[cid[i][0]].label}`);
-                // console.log(`${amount.toFixed(2)}, ${this.currency[cid[i][0]].value}`);
+                if (changeDue[cid[i][0]]) {
+                    changeDue[cid[i][0]].unit++;
+                } else {
+                    changeDue[cid[i][0]] = { label: this.currency[cid[i][0]].label, value: this.currency[cid[i][0]].value, unit: 1 };
+                }
                 amount -= this.currency[cid[i][0]].value;
                 this.currency[cid[i][0]].unit--;
             }
