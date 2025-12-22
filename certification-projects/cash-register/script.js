@@ -54,6 +54,7 @@ class CashRegister {
     }
 
     calculate(amount) {
+        amount = Number(amount);
         let changeDue = [];
 
 
@@ -65,11 +66,10 @@ class CashRegister {
         for (let i = cid.length - 1; i >= 0; i--) {
             // console.log(this.currency[cid[i][0]].value);
             while (this.currency[cid[i][0]].unit > 0 && this.currency[cid[i][0]].value <= amount) {
+                console.log(`${amount.toFixed(2)}, `);
                 amount -= this.currency[cid[i][0]].value;
-                console.log(amount);
                 this.currency[cid[i][0]].unit--;
             }
-
         }
     }
 }
