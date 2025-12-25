@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
     <title>RPG Creature Search App</title>
 </head>
@@ -14,20 +19,24 @@
         <h1>RPG Creature Search App</h1>
         <div id="search-container">
             <h2>Search for Creature Name or ID:</h2>
-            <input type="text" id="search-input"></input>
+            <input type="text" id="search-input" placeholder="Enter the name"></input>
             <button id="search-button">Search</button>
         </div>
         <div id="creature-profile">
             <div id="name-id">
-                <p id="creature-name"></p>
-                <p id="creature-id"></p>
-            </div>
+                <p><span id="creature-name">PYROLYNX</span> <span id="creature-id">#1</span></p>
+                <!-- <p id="creature-name">PYROLYNX</p>
+                <p id="creature-id">#1</p> -->
 
-            <div id="body-stats">
-                <p id="weight"></p>
-                <p id="height"></p>
             </div>
-            <div id="types"></div>
+            <div id="body-stats">
+                <p><span id="weight">Weight: 42</span> <span id="weight">Height: 32</span></p>
+                <!-- <p id="weight">Weight: 42</p>
+                <p id="height">Height: 32</p> -->
+            </div>
+            <div id="types">
+                <p>fire</p>
+            </div>
         </div>
 
         <table class="info-table">
