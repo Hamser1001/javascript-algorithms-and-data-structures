@@ -1,6 +1,7 @@
 body {
     display: flex;
     justify-content: center;
+    align-items: start;
     /* background: #161621; */
     background-image: linear-gradient(45deg, #161621, #0a0a0f);
     padding: 0;
@@ -20,7 +21,7 @@ h2 {
     font-family: "Lato", sans-serif;
     color: white;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     text-align: left;
     margin-bottom: 5px;
 }
@@ -58,13 +59,26 @@ th {
 }
 
 #name-id,
-#body-stats {
+#special-name {
     font-family: "Lato", sans-serif;
     height: 14px;
     color: white;
-    display: inline;
+    /* display: inline; */
+    font-size: 18px;
     margin: 15px 0;
 }
+
+
+#body-stats,
+#special-description {
+    font-family: "Lato", sans-serif;
+    height: 14px;
+    color: rgb(155, 155, 155);
+    /* display: inline; */
+    font-size: 16px;
+    margin: 15px 0;
+}
+
 
 #creature-name,
 #creature-id {
@@ -74,11 +88,25 @@ th {
 
 p {
     margin: 10px 0;
+
 }
 
 #types p {
     font-family: "Lato", sans-serif;
     color: black;
-    width: 50px;
+    text-align: center;
+    /* background: orange; */
+    padding: 5px;
+
+}
+
+#types {
+    /* display: inline; */
+    width: 33%;
+    min-width: 100px;
     background: orange;
+}
+
+table {
+    margin-top: 30px;
 }
