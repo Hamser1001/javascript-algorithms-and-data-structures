@@ -18,9 +18,13 @@ const types = document.getElementById("types");
 
 const showData = (data) => {
     let url = "";
+    if (Number(searchInput.value) > data.length || !data.hasOwnProperty(searchInput.value)) {
+        alert("Creature not found");
+        return;
+    }
+
     data.forEach(element => {
         if (element.id == searchInput.value || element.name == Number(searchInput.value)) {
-            console.log(element.id, element.name);
             url = creatureData.replace(
                 "{name-or-id}",
                 searchInput.value
@@ -29,7 +33,6 @@ const showData = (data) => {
             creatureId.innerText = `#${element.id}`;
         }
     });
-    console.log(url);
     fetchInfos(url);
 }
 
@@ -41,11 +44,16 @@ const showInfo = (data) => {
     specialDescription.innerText = data.special.description
 
     data.stats.forEach((el) => {
-        const statElement = document.getElementById(el.name); // get element by ID
+        const statElement = document.getElementById(el.name);
         if (statElement) {
             statElement.innerText = el.base_stat;
         }
     });
+
+    types.innerHTML = data.types.map((el) => {
+        return `<span id="psychic" class="type">${el.name}</span>`;
+    }).join("");
+
 }
 
 const fetchData = async (url) => {
@@ -54,7 +62,7 @@ const fetchData = async (url) => {
         const data = await res.json();
         showData(data);
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 
@@ -65,13 +73,23 @@ const fetchInfos = async (url) => {
         const data = await res.json();
         showInfo(data);
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 
-const clearInputs = () => { }
+const clearInputs = () => {
+    searchInput.value = "";
+    creatureName.innerText = "";
+    creatureId.innerText = "";
+    weight.innerText = "";
+    height.innerText = "";
+    specialName.innerText = "";
+    specialDescription.innerText = "";
+}
+
 
 
 searchBtn.addEventListener("click", () => {
+    // clearInputs();
     fetchData(creaturesData);
 })

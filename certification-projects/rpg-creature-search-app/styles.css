@@ -98,23 +98,16 @@ p {
 }
 
 .type {
+
     font-family: "Lato", sans-serif;
     color: black;
+    margin-right: 5px;
     text-align: center;
     /* background: orange; */
     padding: 5px;
     width: auto;
     background: orange;
     /* min-width: none; */
-    border-radius: 2px;
+    border-radius: 4px;
 
 }
-
-#types {
-    /* display: inline; */
-
-}
-
-/* table {
-    margin-top: 30px;
-} */
