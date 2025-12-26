@@ -16,3 +16,34 @@ const specialDefense = document.getElementById("special-defense");
 const speed = document.getElementById("speed");
 
 
+const showData = (data) => {
+
+    data.forEach(element => {
+        if (element.id == searchInput.value || element.name == Number(searchInput.value)) {
+            console.log(element.id, element.name);
+            const url = creatureData.replace(
+                "{name-or-id}",
+                searchInput.value
+            );
+            console.log(url);
+            creatureName.innerText = element.name.trim().toUpperCase();
+            creatureId.innerText = `#${element.id}`;
+
+        }
+    });
+}
+
+const fetchData = async () => {
+    try {
+        const res = await fetch(creaturesData);
+        const data = await res.json();
+        showData(data);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+searchBtn.addEventListener("click", () => {
+    fetchData();
+})

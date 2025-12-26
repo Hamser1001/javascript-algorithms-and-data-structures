@@ -1,0 +1,44 @@
+{
+    "id": 14,
+    "name": "Graviboa",
+    "weight": 560,
+    "height": 150,
+    "special": {
+        "name": "Gravity Coil",
+        "description": "Halves the opponent’s Speed when it enters battle."
+    },
+    "stats": [
+        {
+            "base_stat": 110,
+            "name": "hp"
+        },
+        {
+            "base_stat": 85,
+            "name": "attack"
+        },
+        {
+            "base_stat": 130,
+            "name": "defense"
+        },
+        {
+            "base_stat": 65,
+            "name": "special-attack"
+        },
+        {
+            "base_stat": 100,
+            "name": "special-defense"
+        },
+        {
+            "base_stat": 45,
+            "name": "speed"
+        }
+    ],
+    "types": [
+        {
+            "name": "rock"
+        },
+        {
+            "name": "psychic"
+        }
+    ]
+}
