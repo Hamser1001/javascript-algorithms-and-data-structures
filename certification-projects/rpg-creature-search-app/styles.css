@@ -97,20 +97,22 @@ p {
 
 }
 
-#types span {
+.type {
     font-family: "Lato", sans-serif;
     color: black;
     text-align: center;
     /* background: orange; */
     padding: 5px;
+    width: auto;
+    background: orange;
+    /* min-width: none; */
+    border-radius: 2px;
 
 }
 
 #types {
     /* display: inline; */
-    width: 33%;
-    min-width: 100px;
-    background: orange;
+
 }
 
 /* table {

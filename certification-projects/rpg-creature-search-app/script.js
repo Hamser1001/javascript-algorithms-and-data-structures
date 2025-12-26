@@ -69,6 +69,8 @@ const fetchInfos = async (url) => {
     }
 }
 
+const clearInputs = () => { }
+
 
 searchBtn.addEventListener("click", () => {
     fetchData(creaturesData);
