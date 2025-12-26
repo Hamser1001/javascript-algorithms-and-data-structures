@@ -5,37 +5,52 @@ const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-button");
 const creatureName = document.getElementById("creature-name");
 const creatureId = document.getElementById("creature-id");
+const specialName = document.getElementById("special-name");
+const specialDescription = document.getElementById("special-description");
+
+
+const weight = document.getElementById("weight");
+const height = document.getElementById("height");
 
 const types = document.getElementById("types");
 
-const hp = document.getElementById("hp");
-const attack = document.getElementById("attack");
-const defense = document.getElementById("defense");
-const specialAttack = document.getElementById("special-attack");
-const specialDefense = document.getElementById("special-defense");
-const speed = document.getElementById("speed");
 
 
 const showData = (data) => {
-
+    let url = "";
     data.forEach(element => {
         if (element.id == searchInput.value || element.name == Number(searchInput.value)) {
             console.log(element.id, element.name);
-            const url = creatureData.replace(
+            url = creatureData.replace(
                 "{name-or-id}",
                 searchInput.value
             );
-            console.log(url);
             creatureName.innerText = element.name.trim().toUpperCase();
             creatureId.innerText = `#${element.id}`;
+        }
+    });
+    console.log(url);
+    fetchInfos(url);
+}
 
+const showInfo = (data) => {
+    weight.innerText = `Weight: ${data.weight}`;
+    height.innerText = `Height: ${data.height}`;
+
+    specialName.innerText = data.special.name
+    specialDescription.innerText = data.special.description
+
+    data.stats.forEach((el) => {
+        const statElement = document.getElementById(el.name); // get element by ID
+        if (statElement) {
+            statElement.innerText = el.base_stat;
         }
     });
 }
 
-const fetchData = async () => {
+const fetchData = async (url) => {
     try {
-        const res = await fetch(creaturesData);
+        const res = await fetch(url);
         const data = await res.json();
         showData(data);
     } catch (error) {
@@ -44,6 +59,17 @@ const fetchData = async () => {
 }
 
 
+const fetchInfos = async (url) => {
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        showInfo(data);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 searchBtn.addEventListener("click", () => {
-    fetchData();
+    fetchData(creaturesData);
 })
