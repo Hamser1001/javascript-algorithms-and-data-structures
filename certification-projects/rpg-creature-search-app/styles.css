@@ -79,6 +79,12 @@ th {
     margin: 15px 0;
 }
 
+#creature-profile {
+    height: 170px;
+    box-sizing: border-box;
+    /* background: red; */
+}
+
 
 #creature-name,
 #creature-id {
@@ -107,6 +113,6 @@ p {
     background: orange;
 }
 
-table {
+/* table {
     margin-top: 30px;
-}
+} */
