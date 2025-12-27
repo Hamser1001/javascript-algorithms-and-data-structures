@@ -21,20 +21,23 @@ class Rectangle {
     }
 
     get width() {
-        return this._width;
+        return `${this._width.toFixed(2)}cm`;
     }
 
     get height() {
-        return this._height;
+        return `${this._height.toFixed(2)}cm`;
     }
+    
     get area() {
-        return this._width * this._height;
+        return `${(this._width * this._height).toFixed(2)}cm²`;
     }
 }
 
 const rectangle = new Rectangle(3, 4);
+
 rectangle.width = 5;
 rectangle.height = 6;
+
 console.log(rectangle.width);
 console.log(rectangle.height);
 console.log(rectangle.area);
