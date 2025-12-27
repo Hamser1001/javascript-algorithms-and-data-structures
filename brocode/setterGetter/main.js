@@ -39,6 +39,10 @@ class Person {
     get age() {
         return this._age;
     }
+
+    get fullName() {
+        return this._firstName + " " + this._lastName;
+    }
 }
 
 const person = new Person("Hamza", "Serhani", 31);
@@ -46,3 +50,4 @@ const person = new Person("Hamza", "Serhani", 31);
 console.log(person.firstName);
 console.log(person.lastName);
 console.log(person.age);
+console.log(person.fullName);
